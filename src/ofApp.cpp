@@ -45,7 +45,7 @@ void ofApp::draw() {
 }
 
 void ofApp::drawMode1(float x, float y, float r, int n) {
-    if (n == 0) return;
+    if (n == level) return;
 
     int delta = r * 0.35;
     ofDrawCircle(x, y, r);
@@ -65,7 +65,7 @@ void ofApp::drawMode1(float x, float y, float r, int n) {
 }
 
 void ofApp::drawMode2(float x, float y, int n, float length, float rad) {
-    if (n == 0) return;
+    if (n == level) return;
 
     float x2 = x + length * cos(rad);
     float y2 = y + length * sin(rad);
@@ -77,7 +77,7 @@ void ofApp::drawMode2(float x, float y, int n, float length, float rad) {
 }
 
 void ofApp::drawMode3(float x, float y, float size, int n) {
-    if (n == 0) {
+    if (n == level) {
         return;
     }
 
@@ -92,7 +92,7 @@ void ofApp::drawMode3(float x, float y, float size, int n) {
 }
 
 void ofApp::drawMode4(float x, float y, float n) {
-    if (n == 0) return;
+    if (n == level) return;
 
     float r = ofRandom(1);
 
@@ -125,6 +125,16 @@ void ofApp::keyPressed(int key) {
         ofSetFullscreen(fullscreen++ % 2 == 0);
     else if (key == OF_KEY_ESC)
         ofSetFullscreen(false);
+    else if (key == OF_KEY_RIGHT){
+        if (level > -3){ //added a limit to prevent crashing.
+            level--; 
+        }
+    }
+    else if (key == OF_KEY_LEFT){
+        if (level < 3){ //added a limit to prevent crashing.
+            level++;
+        }
+    }
 }
 
 //--------------------------------------------------------------

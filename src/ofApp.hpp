@@ -9,11 +9,14 @@ class ofApp : public ofBaseApp {
     char mode = '1';
     float angle = 0;
     unsigned int fullscreen;
+    int level = 0; //levels go from -3 to 3.
 
   public:
     void setup();
     void update();
     void draw();
+    int getLevel(){return level;}
+    int setLevel(int L){level - L;}
 
     void keyPressed(int key);
     void keyReleased(int key);
