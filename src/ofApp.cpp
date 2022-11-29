@@ -50,6 +50,11 @@ void ofApp::drawMode1(float x, float y, float r, int n) {
     int delta = r * 0.35;
     ofDrawCircle(x, y, r);
 
+    
+    ofSetColor(ofColor::seaGreen); //color for THAT figure
+    ofDrawCircle(x, y, r);
+    ofSetColor(ofColor::white);
+
     float angle1 = angle;
     float angle2 = PI / 3 + angle;
     float angle3 = PI + angle;
@@ -72,6 +77,11 @@ void ofApp::drawMode2(float x, float y, int n, float length, float rad) {
 
     ofDrawLine(x, y, x2, y2);
 
+    ofFill();
+    ofSetColor(ofColor::paleVioletRed); //color for the most beautiful tree y'all ever seen <3
+    ofDrawLine(x, y, x2, y2);
+    ofSetColor(ofColor::white);
+
     drawMode2(x2, y2, n - 1, 0.7 * length, rad + 0.2 * PI);
     drawMode2(x2, y2, n - 1, 0.7 * length, rad - 0.2 * PI);
 }
@@ -87,6 +97,10 @@ void ofApp::drawMode3(float x, float y, float size, int n) {
 
     ofDrawTriangle(a, b, c);
 
+    ofSetColor(ofColor::steelBlue); //color for triangle
+    ofDrawTriangle(a, b, c);
+    ofSetColor(ofColor::white);
+
     drawMode3(x, y, size / 2, n - 1);
     drawMode3((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, n - 1);
 }
@@ -100,7 +114,7 @@ void ofApp::drawMode4(float x, float y, float n) {
     float py = ofMap(y, 0, 9.9983, ofGetHeight(), 0);
 
     ofFill();
-    ofSetColor(ofColor::green);
+    ofSetColor(ofColor::lightYellow); //color for the leaf
     ofDrawCircle(px, py, 0.6);
     ofSetColor(ofColor::white);
 

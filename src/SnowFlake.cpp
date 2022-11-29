@@ -18,10 +18,15 @@ void SnowFlake::draw() {
     draw(5, new SnowFlake(p1, p2));
     draw(5, new SnowFlake(p2, p3));
     draw(5, new SnowFlake(p3, p1));
+
 }
 void SnowFlake::draw(int n, SnowFlake *flake) {
-    if (n < 2)
-        ofDrawLine(flake->getStart(), flake->getEnd());
+    if (n < 2){
+        ofSetColor(ofColor::red); 
+        ofDrawLine(flake->getStart(), flake->getEnd()); //color for the snowflake CHRISTMAS
+        ofSetColor(ofColor::white);
+    }
+
     else {
         draw(n - 1, new SnowFlake(flake->getA(), flake->getB()));
         draw(n - 1, new SnowFlake(flake->getB(), flake->getC()));
