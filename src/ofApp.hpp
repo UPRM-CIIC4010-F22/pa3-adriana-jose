@@ -16,7 +16,7 @@ class ofApp : public ofBaseApp {
     void update();
     void draw();
     int getLevel(){return level;}
-    int setLevel(int L){level - L;}
+    void setLevel(int L){level = L;} //fixed from int to void
 
     void keyPressed(int key);
     void keyReleased(int key);

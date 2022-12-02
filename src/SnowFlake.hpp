@@ -22,7 +22,7 @@ class SnowFlake {
     void setStart(glm::vec2 start) { this->start = start; }
     void setEnd(glm::vec2 end) { this->end = end; }
 
-    void draw();
+    void draw( int var); //added variable
     void draw(int n, SnowFlake *flake);
 
     glm::vec2 getA();

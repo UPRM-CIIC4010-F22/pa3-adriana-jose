@@ -38,8 +38,8 @@ void ofApp::draw() {
         drawMode4(0, 0, 10 * 1000);
         break;
     case '5':
-        // Koch SnowFlake
-        SnowFlake().draw();
+        // Koch SnowFlake work here for sure
+        SnowFlake().draw( level );
         break;
     }
 }
@@ -140,12 +140,12 @@ void ofApp::keyPressed(int key) {
     else if (key == OF_KEY_ESC)
         ofSetFullscreen(false);
     else if (key == OF_KEY_RIGHT){
-        if (level > -3){ //added a limit to prevent crashing.
+        if (level > -3){ //added a limit to prevent crashing. its going backwards on the snowflake
             level--; 
         }
     }
     else if (key == OF_KEY_LEFT){
-        if (level < 3){ //added a limit to prevent crashing.
+        if (level < 3){ //added a limit to prevent crashing. its going backwards
             level++;
         }
     }
