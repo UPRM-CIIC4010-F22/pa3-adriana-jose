@@ -2,7 +2,7 @@
 
 #include "Fractal.hpp"
 
-class AbstractFractal : Fractals {
+class AbstractFractal : public Fractals {
    protected:
     string name;
     int level;

@@ -2,13 +2,13 @@
 
 #include "AbstractFractal.hpp"
 
-class Circle : AbstractFractal {
+class Circle : public AbstractFractal {
    private:
     float x;
     float y;
     float r;
     int n;
-    float angle;
+    float angle = 0.01;
 
    public:
     Circle(string name, int level, float x, float y, float r, int n);
@@ -24,7 +24,8 @@ class Circle : AbstractFractal {
     void setAngle(float i){angle = i;}
     float getAngle(){return angle;}
 
-    void draw(float x, float y, float r, int n);
+    void draw();
+    void drawHelper(float x, float y, float r, int n);
 
     void setName(string n){name = n;}
     string getName(){return name;}

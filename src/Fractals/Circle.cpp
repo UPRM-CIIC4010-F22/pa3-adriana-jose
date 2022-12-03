@@ -7,7 +7,11 @@ Circle::Circle(string name, int level, float x, float y, float r, int n) : Abstr
     this->n = n;
 }
 
-void Circle::draw(float x, float y, float r, int n){
+void Circle::draw(){
+    Circle::drawHelper(ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+}
+
+void Circle::drawHelper(float x, float y, float r, int n){
     if (n == level) return;
 
     int delta = r * 0.35;
@@ -24,10 +28,10 @@ void Circle::draw(float x, float y, float r, int n){
     float angle4 = 2 * PI / 3 + angle;
     float angle5 = 4 * PI / 3 + angle;
     float angle6 = 5 * PI / 3 + angle;
-    Circle::draw(x + r * cos(angle1), y + r * sin(angle1), delta, n - 1);
-    Circle::draw(x + r * cos(angle2), y + r * sin(angle2), delta, n - 1);
-    Circle::draw(x + r * cos(angle3), y + r * sin(angle3), delta, n - 1);
-    Circle::draw(x + r * cos(angle4), y + r * sin(angle4), delta, n - 1);
-    Circle::draw(x + r * cos(angle5), y + r * sin(angle5), delta, n - 1);
-    Circle::draw(x + r * cos(angle6), y + r * sin(angle6), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle1), y + r * sin(angle1), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle2), y + r * sin(angle2), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle3), y + r * sin(angle3), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle4), y + r * sin(angle4), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle5), y + r * sin(angle5), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle6), y + r * sin(angle6), delta, n - 1);
 }

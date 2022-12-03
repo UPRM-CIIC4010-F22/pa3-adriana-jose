@@ -4,16 +4,18 @@
 
 #include "ofMain.h"
 #include "Circle.hpp"
+#include "AbstractFractal.hpp"
+#include "Fractal.hpp"
 
 class ofApp : public ofBaseApp {
   private:
     char mode = '1';
-    float angle = 0;
     unsigned int fullscreen;
     int level = 0; //levels go from -3 to 3.
+    int index = 1;
 
-    vector<AbstractFractal> polymorphic;
-    Circle *circle;
+    Fractals *fractals;
+    vector<Fractals *> polymorphic;
 
   public:
     void setup();

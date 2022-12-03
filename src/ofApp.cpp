@@ -1,12 +1,14 @@
 #include "ofApp.hpp"
 #include "SnowFlake.hpp"
-#include "Circle.hpp"
 
 //--------------------------------------------------------------
 void ofApp::setup() {
     ofSetEscapeQuitsApp(false);
     fullscreen = 0;
-    circle = new Circle("shape1", 2, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+    vector<Fractals *> polymorphic;
+    Circle *circle = new Circle("shape1", 2, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+
+    polymorphic.push_back(circle);
 }
 
 //--------------------------------------------------------------
@@ -21,8 +23,7 @@ void ofApp::draw() {
     switch (mode) {
     case '1': {
         // Circle
-        circle->setAngle(circle->getAngle() + 0.01);
-        circle->draw(ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+        polymorphic[index]->draw();
     } break;
     case '2': {
         // Tree
