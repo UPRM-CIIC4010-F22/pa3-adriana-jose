@@ -9,10 +9,11 @@ class AbstractFractal : public Fractals {
 
    public:
     AbstractFractal(string x, int y);
+    virtual ~AbstractFractal();
     void setName(string n){name = n;}
     string getName(){return name;}
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
 
-    void draw();
+    virtual void draw();
 };

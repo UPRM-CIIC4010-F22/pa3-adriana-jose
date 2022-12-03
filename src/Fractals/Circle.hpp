@@ -11,7 +11,8 @@ class Circle : public AbstractFractal {
     float angle = 0.01;
 
    public:
-    Circle(string name, int level, float x, float y, float r, int n);
+    Circle(float x, float y, float r, int n);
+    virtual ~Circle(){}
     float getX(){return x;}
     void setX(float i){x = i;}
     float getY(){return y;}
@@ -24,8 +25,7 @@ class Circle : public AbstractFractal {
     void setAngle(float i){angle = i;}
     float getAngle(){return angle;}
 
-    void draw();
-    void drawHelper(float x, float y, float r, int n);
+    void draw(float x, float y, float r, int n);
 
     void setName(string n){name = n;}
     string getName(){return name;}

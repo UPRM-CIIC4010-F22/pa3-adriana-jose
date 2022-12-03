@@ -6,7 +6,7 @@ void ofApp::setup() {
     ofSetEscapeQuitsApp(false);
     fullscreen = 0;
     vector<Fractals *> polymorphic;
-    Circle *circle = new Circle("shape1", 2, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+    Circle *circle = new Circle(ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
 
     polymorphic.push_back(circle);
 }
@@ -20,11 +20,8 @@ void ofApp::draw() {
     ofBackgroundGradient(ofColor(65), ofColor(0), OF_GRADIENT_BAR);
 
     ofNoFill();
+    polymorphic[index]->draw();
     switch (mode) {
-    case '1': {
-        // Circle
-        polymorphic[index]->draw();
-    } break;
     case '2': {
         // Tree
         float length = 0.31 * ofGetHeight();
