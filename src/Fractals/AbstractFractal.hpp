@@ -3,15 +3,12 @@
 #include "Fractal.hpp"
 
 class AbstractFractal : Fractals {
-   public:
+   protected:
     string name;
     int level;
-    AbstractFractal(string x, int y) {
-        name = x;
-        level = y;
-    };
 
-   private:
+   public:
+    AbstractFractal(string x, int y);
     void setName(string n){name = n;}
     string getName(){return name;}
     void setLevel(int l){level = l;}
