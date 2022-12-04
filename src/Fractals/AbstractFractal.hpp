@@ -15,5 +15,5 @@ class AbstractFractal : public Fractals {
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
 
-    virtual void draw();
+    virtual void draw() = 0;
 };

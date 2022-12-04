@@ -25,7 +25,8 @@ class Circle : public AbstractFractal {
     void setAngle(float i){angle = i;}
     float getAngle(){return angle;}
 
-    void draw(float x, float y, float r, int n);
+    void draw() override;
+    void drawHelper(float x, float y, float r, int n);
 
     void setName(string n){name = n;}
     string getName(){return name;}

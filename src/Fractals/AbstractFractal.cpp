@@ -8,7 +8,3 @@ AbstractFractal::AbstractFractal(string name, int level) : Fractals() {
 AbstractFractal::~AbstractFractal(){
 
 };
-
-void AbstractFractal::draw(){
-
-};
