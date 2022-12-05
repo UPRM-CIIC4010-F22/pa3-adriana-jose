@@ -5,6 +5,8 @@ Circle::Circle(string name, int level, float x, float y, float r, int n) : Abstr
     this->y = y;
     this->r = r;
     this->n = n;
+    this->name = name;
+    this->level = level;
 }
 
 void Circle::draw(){
@@ -13,7 +15,7 @@ void Circle::draw(){
 }
 
 void Circle::drawHelper(float x, float y, float r, int n){
-    if (n == 0) return;
+    if (n == level) return;
 
     int delta = r * 0.35;
     ofDrawCircle(x, y, r);

@@ -115,13 +115,13 @@ void ofApp::keyPressed(int key) {
     else if (key == OF_KEY_ESC)
         ofSetFullscreen(false);
     else if (key == OF_KEY_RIGHT){
-        if (level > -3){ //added a limit to prevent crashing. its going backwards on the snowflake
-            level--; 
+        if (polymorphic[index]->getLevel() > -3){ //added a limit to prevent crashing. its going backwards on the snowflake
+            polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
         }
     }
     else if (key == OF_KEY_LEFT){
-        if (level < 3){ //added a limit to prevent crashing. its going backwards
-            level++;
+        if (polymorphic[index]->getLevel() < 3){ //added a limit to prevent crashing. its going backwards
+            polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
         }
     }
 }

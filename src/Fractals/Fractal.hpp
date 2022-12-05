@@ -6,6 +6,7 @@
 class Fractals {
    public:
     virtual void draw(){}
-    virtual int getLevel();
-    virtual string getName();
+    virtual int getLevel(){}
+    virtual void setLevel(int l){}
+    virtual string getName(){}
 };
