@@ -5,10 +5,11 @@
 void ofApp::setup() {
     ofSetEscapeQuitsApp(false);
     fullscreen = 0;
-    vector<Fractals *> polymorphic;
-    Circle *circle = new Circle(ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
 
-    polymorphic.push_back(circle);
+    Circle* newCircle = new Circle("circle", 0, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+
+    polymorphic.push_back(newCircle);
+
 }
 
 //--------------------------------------------------------------

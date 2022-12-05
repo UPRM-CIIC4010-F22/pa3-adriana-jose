@@ -12,9 +12,8 @@ class ofApp : public ofBaseApp {
     char mode = '1';
     unsigned int fullscreen;
     int level = 0; //levels go from -3 to 3.
-    int index = 1;
+    int index = 0;
 
-    Fractals *fractals;
     vector<Fractals *> polymorphic;
 
   public:

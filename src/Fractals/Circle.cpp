@@ -1,6 +1,6 @@
 #include "Circle.hpp"
 
-Circle::Circle(float x, float y, float r, int n) : AbstractFractal(name, level) {
+Circle::Circle(string name, int level, float x, float y, float r, int n) : AbstractFractal(name, level) {
     this->x = x;
     this->y = y;
     this->r = r;
@@ -8,11 +8,12 @@ Circle::Circle(float x, float y, float r, int n) : AbstractFractal(name, level) 
 }
 
 void Circle::draw(){
-    Circle::drawHelper(ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+    angle += 0.01;
+    Circle::drawHelper(x, y, r, n);
 }
 
 void Circle::drawHelper(float x, float y, float r, int n){
-    if (n == level) return;
+    if (n == 0) return;
 
     int delta = r * 0.35;
     ofDrawCircle(x, y, r);

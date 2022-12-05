@@ -1,6 +1,8 @@
 #pragma once
 
 #include "AbstractFractal.hpp"
+#include <cmath>
+#include "ofMain.h"
 
 class Circle : public AbstractFractal {
    private:
@@ -8,10 +10,11 @@ class Circle : public AbstractFractal {
     float y;
     float r;
     int n;
-    float angle = 0.01;
+    float angle = 0;
+    int level;
 
    public:
-    Circle(float x, float y, float r, int n);
+    Circle(string name, int level, float x, float y, float r, int n);
     virtual ~Circle(){}
     float getX(){return x;}
     void setX(float i){x = i;}
@@ -21,11 +24,8 @@ class Circle : public AbstractFractal {
     void setR(float i){r = i;}
     int getN(){return n;}
     void setN(int i){n = i;}
-    
-    void setAngle(float i){angle = i;}
-    float getAngle(){return angle;}
 
-    void draw() override;
+    void draw();
     void drawHelper(float x, float y, float r, int n);
 
     void setName(string n){name = n;}
