@@ -28,9 +28,9 @@ void ofApp::draw() {
         float length = 0.31 * ofGetHeight();
         drawMode2(ofGetWidth() / 2, ofGetHeight() - 20, 10, length, 1.5 * PI);
 
-        drawMode2(ofGetWidth() / 4 , ofGetHeight() - 20 , 10, (length)/2, 1.5 * PI); //left baby tree
+        drawMode2(ofGetWidth() / 4 , ofGetHeight() - 20 , 10, (length)/3.5, 1.5 * PI); //left baby tree
 
-        drawMode2(ofGetWidth() - 350 , ofGetHeight() - 20 , 10, (length)/2, 1.5 * PI); // right baby tree
+        drawMode2(ofGetWidth() - 350 , ofGetHeight() - 20 , 10, (length)/3.5, 1.5 * PI); // right baby tree
         
     } break;
     case '3': {
