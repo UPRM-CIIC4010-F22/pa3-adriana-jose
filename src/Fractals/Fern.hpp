@@ -9,6 +9,7 @@ class Fern : public AbstractFractal {
     float x;
     float y;
     int level;
+    int limit = 10 * 1000;
     string name;
 
    public:
@@ -26,4 +27,6 @@ class Fern : public AbstractFractal {
     string getName(){return name;}
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
+
+    int getLimit(){return limit;}
 };

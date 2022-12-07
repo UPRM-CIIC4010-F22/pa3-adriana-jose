@@ -26,17 +26,13 @@ void ofApp::setup() {
 void ofApp::update() {
     if (animation == true){
         if (animationUp == true){
-            if (polymorphic[index]->getLevel() < 6){
+            if (polymorphic[index]->getLevel() < polymorphic[index]->getLimit()){
                 if (animationTimer == 0){
                     if (index != 3){
-                        if (polymorphic[index]->getLevel() < 6){ //added a limit to prevent crashing.
-                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
-                        }
+                        polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
                     }
                     else {
-                        if (polymorphic[index]->getLevel() > 1000){
-                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
-                        }
+                        polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
                     }
                     animationTimer = 30;
                 }
@@ -48,15 +44,11 @@ void ofApp::update() {
         else {
             if (polymorphic[index]->getLevel() > 0){
                 if (animationTimer == 0){
-                    if (index != 3) {
-                        if (polymorphic[index]->getLevel() > 0){ //added a limit to prevent crashing.
-                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
-                        }
+                    if (index != 3){
+                        polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
                     }
                     else {
-                        if (polymorphic[index]->getLevel() > 1000){
-                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1000);
-                        }
+                        polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1000);
                     }
                     animationTimer = 30;
                 }
@@ -77,7 +69,7 @@ void ofApp::draw() {
     polymorphic[index]->draw();
     ofSetColor(ofColor::white);
     ofDrawBitmapString(polymorphic[index]->getName(), 50, 50);
-    ofDrawBitmapString(polymorphic[index]->getLevel(), 50, 75);
+    ofDrawBitmapString("Level: " + ofToString(polymorphic[index]->getLevel()), 50, 75);
 
 }
 //--------------------------------------------------------------
@@ -108,12 +100,12 @@ void ofApp::keyPressed(int key) {
         ofSetFullscreen(false);
     else if (key == OF_KEY_RIGHT){
         if (index != 3){
-            if (polymorphic[index]->getLevel() < 6){ //added a limit to prevent crashing.
+            if (polymorphic[index]->getLevel() < polymorphic[index]->getLimit()){ //added a limit to prevent crashing.
                 polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
             }
         }
         else {
-            if (polymorphic[index]->getLevel() < 9000){
+            if (polymorphic[index]->getLevel() < polymorphic[index]->getLimit()){
                 polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
             }
         }
@@ -125,7 +117,7 @@ void ofApp::keyPressed(int key) {
             }
         }
         else {
-            if (polymorphic[index]->getLevel() > 1000){
+            if (polymorphic[index]->getLevel() > 0){
                 polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1000);
             }
         }

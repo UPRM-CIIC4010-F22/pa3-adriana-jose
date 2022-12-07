@@ -11,6 +11,7 @@ class Circle : public AbstractFractal {
     float r;
     float angle = 0;
     int level;
+    int limit = 6;
     string name;
 
    public:
@@ -30,4 +31,6 @@ class Circle : public AbstractFractal {
     string getName(){return name;}
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
+
+    int getLimit(){return limit;}
 };

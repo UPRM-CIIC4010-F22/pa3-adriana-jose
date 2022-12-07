@@ -15,6 +15,7 @@ class SnowFlake : public AbstractFractal {
     glm::vec2 end;
     string name = "Koch Snowflake";
     int level = 5;
+    int limit = 7;
 
   public:
     SnowFlake();
@@ -30,6 +31,8 @@ class SnowFlake : public AbstractFractal {
 
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
+
+    int getLimit(){return limit;}
 
     void setName(string n){name = n;}
     string getName(){return name;}

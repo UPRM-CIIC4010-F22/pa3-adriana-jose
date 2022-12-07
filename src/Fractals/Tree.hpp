@@ -11,6 +11,7 @@ class Tree : public AbstractFractal {
     float length;
     float rad;
     int level;
+    int limit = 12;
     string name;
 
    public:
@@ -32,4 +33,6 @@ class Tree : public AbstractFractal {
     string getName(){return name;}
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
+
+    int getLimit(){return limit;}
 };

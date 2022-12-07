@@ -9,4 +9,5 @@ class Fractals {
     virtual int getLevel(){}
     virtual void setLevel(int l){}
     virtual string getName(){}
+    virtual int getLimit(){}
 };

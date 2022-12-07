@@ -15,6 +15,7 @@ class AbstractFractal : public Fractals {
     string getName(){return name;}
     void setLevel(int l){level = l;}
     int getLevel(){return level;}
+    int getLimit(){}
 
     void draw(){}
 };
