@@ -11,6 +11,7 @@ class Triangle : public AbstractFractal {
     float size;
     int n;
     int level;
+    string name;
 
    public:
     Triangle(string name, int level, float x, float y, float size, int n);

@@ -9,13 +9,15 @@ void ofApp::setup() {
 
     Circle* newCircle = new Circle("circle", 0, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
     Tree* newTree = new Tree("Tree", 0, ofGetWidth() / 2, ofGetHeight() - 20, length, 1.5 * PI, 10);
-    Triangle* newTriangle = new Triangle("Triangle", 0, (ofGetWidth() - (0.88 * ofGetHeight())) / 2, ofGetHeight() / 2 - 0.4 * (0.88 * ofGetHeight()), (0.88 * ofGetHeight()), 7);
-    Fern* newFern = new Fern("Fern", 0, 0, 0, 10 * 1000);
+    Triangle* newTriangle = new Triangle("Sierpinski Triangle", 0, (ofGetWidth() - (0.88 * ofGetHeight())) / 2, ofGetHeight() / 2 - 0.4 * (0.88 * ofGetHeight()), (0.88 * ofGetHeight()), 7);
+    Fern* newFern = new Fern("Bernsley Fern", 0, 0, 0, 10 * 1000);
+    SnowFlake* newFlake = new SnowFlake();
 
     polymorphic.push_back(newCircle);
     polymorphic.push_back(newTree);
     polymorphic.push_back(newTriangle);
     polymorphic.push_back(newFern);
+    polymorphic.push_back(newFlake);
 
 }
 
@@ -29,58 +31,9 @@ void ofApp::draw() {
 
     ofNoFill();
     polymorphic[index]->draw();
-    switch (mode) {
-    case '1': {
-        // Circle
-        float r = 0.31 * ofGetHeight();
-        angle += 0.01;
-        drawMode1(ofGetWidth() / 2, ofGetHeight() / 2, r, 3);
-    } break;
-    case '2': {
-        // Tree
-        float length = 0.31 * ofGetHeight();
-        drawMode2(ofGetWidth() / 2, ofGetHeight() - 20, 10, length, 1.5 * PI);
-    } break;
-    case '3': {
-        // Sierpinski Triangle
-        float size = 0.88 * ofGetHeight();
-        drawMode3((ofGetWidth() - size) / 2, ofGetHeight() / 2 - 0.4 * size, size, 7);
-    } break;
-    case '4':
-        // Barnsley Fern
-        drawMode4(0, 0, 10 * 1000);
-        break;
-    case '5':
-        // Koch SnowFlake work here for sure
-        SnowFlake().draw( level );
-        break;
-    }
-}
-
-void ofApp::drawMode4(float x, float y, float n) {
-    if (n == level) return;
-
-    float r = ofRandom(1);
-
-    float px = ofMap(x, -2.1820, 2.6558, 0, ofGetWidth());
-    float py = ofMap(y, 0, 9.9983, ofGetHeight(), 0);
-
-    ofFill();
-    ofSetColor(ofColor::lightYellow); //color for the leaf
-    ofDrawCircle(px, py, 0.6);
     ofSetColor(ofColor::white);
+    ofDrawBitmapString(polymorphic[index]->getName(), 50, 50);
 
-    if (r < 0.01)
-        drawMode4(0, 0.16 * y, n - 1);
-
-    else if (r < 0.86)
-        drawMode4(0.85 * x + 0.04 * y, -0.04 * x + 0.85 * y + 1.6, n - 1);
-
-    else if (r < 0.93)
-        drawMode4(0.2 * x - 0.26 * y, 0.23 * x + 0.22 * y + 1.6, n - 1);
-
-    else
-        drawMode4(-0.15 * x + 0.28 * y, 0.26 * x + 0.24 * y + 0.44, n - 1);
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {

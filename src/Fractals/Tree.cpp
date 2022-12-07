@@ -12,6 +12,8 @@ Tree::Tree(string name, int level, float x, float y, float length, float rad, in
 
 void Tree::draw(){ 
     Tree::drawHelper(x, y, length, rad, n);
+    Tree::drawHelper(x / 2, y, length / 2, rad, n);
+    Tree::drawHelper(x * 1.5, y, length / 2, rad, n); // right baby tree
 }
 
 void Tree::drawHelper(float x, float y, float length, float rad, int n){

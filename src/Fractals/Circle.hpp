@@ -12,6 +12,7 @@ class Circle : public AbstractFractal {
     int n;
     float angle = 0;
     int level;
+    string name;
 
    public:
     Circle(string name, int level, float x, float y, float r, int n);

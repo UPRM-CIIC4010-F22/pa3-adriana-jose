@@ -8,6 +8,7 @@ class AbstractFractal : public Fractals {
     int level;
 
    public:
+    AbstractFractal(){}
     AbstractFractal(string x, int y);
     virtual ~AbstractFractal();
     void setName(string n){name = n;}

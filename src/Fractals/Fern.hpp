@@ -10,6 +10,7 @@ class Fern : public AbstractFractal {
     float y;
     float n;
     int level;
+    string name;
 
    public:
     Fern(string name, int level, float x, float y, float n);
