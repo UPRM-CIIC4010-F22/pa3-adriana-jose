@@ -13,12 +13,15 @@ void ofApp::setup() {
     Triangle* newTriangle = new Triangle("Sierpinski Triangle", 7, (ofGetWidth() - (0.88 * ofGetHeight())) / 2, ofGetHeight() / 2 - 0.4 * (0.88 * ofGetHeight()), (0.88 * ofGetHeight()));
     Fern* newFern = new Fern("Bernsley Fern", 10 * 1000, 0, 0);
     SnowFlake* newFlake = new SnowFlake();
+    Light* newLight = new Light("FlashLight", 3, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight());
 
     polymorphic.push_back(newCircle);
     polymorphic.push_back(newTree);
     polymorphic.push_back(newTriangle);
     polymorphic.push_back(newFern);
     polymorphic.push_back(newFlake);
+    polymorphic.push_back(newLight);
+
 
 }
 
@@ -75,7 +78,7 @@ void ofApp::draw() {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 
-    if (key >= '1' && key <= '5'){
+    if (key >= '1' && key <= '6'){
         switch(key){
         case '1':
             index = 0;
@@ -91,6 +94,9 @@ void ofApp::keyPressed(int key) {
             break;
         case '5':
             index = 4;
+            break;
+        case '6':
+            index = 5;
             break;
         }
     }

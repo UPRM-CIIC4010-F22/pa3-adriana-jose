@@ -9,6 +9,7 @@
 #include "Fern.hpp"
 #include "AbstractFractal.hpp"
 #include "Fractal.hpp"
+#include "Light.hpp"
 
 class ofApp : public ofBaseApp {
   private:
@@ -44,4 +45,5 @@ class ofApp : public ofBaseApp {
     void drawMode2(float x, float y, int n, float length, float rad);
     void drawMode3(float x, float y, float size, int n);
     void drawMode4(float x, float y, float n);
+    void drawMode5(float x, float y, float r);
 };
