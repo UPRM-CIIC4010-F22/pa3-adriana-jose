@@ -14,7 +14,7 @@ class SnowFlake : public AbstractFractal {
     glm::vec2 start;
     glm::vec2 end;
     string name = "Koch Snowflake";
-    int level = 2;
+    int level = 5;
 
   public:
     SnowFlake();
@@ -26,7 +26,7 @@ class SnowFlake : public AbstractFractal {
     void setEnd(glm::vec2 end) { this->end = end; }
 
     void draw(); //added variable
-    void draw(int n, SnowFlake *flake);
+    void draw(int level, SnowFlake *flake);
 
     void setLevel(int l){level = l;}
     int getLevel(){return level;}

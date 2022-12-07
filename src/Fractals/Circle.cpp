@@ -1,21 +1,20 @@
 #include "Circle.hpp"
 
-Circle::Circle(string name, int level, float x, float y, float r, int n) : AbstractFractal(name, level) {
+Circle::Circle(string name, int level, float x, float y, float r) : AbstractFractal(name, level) {
     this->x = x;
     this->y = y;
     this->r = r;
-    this->n = n;
     this->name = name;
     this->level = level;
 }
 
 void Circle::draw(){
     angle += 0.01;
-    Circle::drawHelper(x, y, r, n);
+    Circle::drawHelper(x, y, r, level);
 }
 
-void Circle::drawHelper(float x, float y, float r, int n){
-    if (n == level) return;
+void Circle::drawHelper(float x, float y, float r, int level){
+    if (0 == level) return;
 
     int delta = r * 0.35;
     ofDrawCircle(x, y, r);
@@ -31,10 +30,10 @@ void Circle::drawHelper(float x, float y, float r, int n){
     float angle4 = 2 * PI / 3 + angle;
     float angle5 = 4 * PI / 3 + angle;
     float angle6 = 5 * PI / 3 + angle;
-    Circle::drawHelper(x + r * cos(angle1), y + r * sin(angle1), delta, n - 1);
-    Circle::drawHelper(x + r * cos(angle2), y + r * sin(angle2), delta, n - 1);
-    Circle::drawHelper(x + r * cos(angle3), y + r * sin(angle3), delta, n - 1);
-    Circle::drawHelper(x + r * cos(angle4), y + r * sin(angle4), delta, n - 1);
-    Circle::drawHelper(x + r * cos(angle5), y + r * sin(angle5), delta, n - 1);
-    Circle::drawHelper(x + r * cos(angle6), y + r * sin(angle6), delta, n - 1);
+    Circle::drawHelper(x + r * cos(angle1), y + r * sin(angle1), delta, level - 1);
+    Circle::drawHelper(x + r * cos(angle2), y + r * sin(angle2), delta, level - 1);
+    Circle::drawHelper(x + r * cos(angle3), y + r * sin(angle3), delta, level - 1);
+    Circle::drawHelper(x + r * cos(angle4), y + r * sin(angle4), delta, level - 1);
+    Circle::drawHelper(x + r * cos(angle5), y + r * sin(angle5), delta, level - 1);
+    Circle::drawHelper(x + r * cos(angle6), y + r * sin(angle6), delta, level - 1);
 }

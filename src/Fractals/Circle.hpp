@@ -9,13 +9,12 @@ class Circle : public AbstractFractal {
     float x;
     float y;
     float r;
-    int n;
     float angle = 0;
     int level;
     string name;
 
    public:
-    Circle(string name, int level, float x, float y, float r, int n);
+    Circle(string name, int level, float x, float y, float r);
     virtual ~Circle(){}
     float getX(){return x;}
     void setX(float i){x = i;}
@@ -23,11 +22,9 @@ class Circle : public AbstractFractal {
     void setY(float i){y = i;}
     float getR(){return r;}
     void setR(float i){r = i;}
-    int getN(){return n;}
-    void setN(int i){n = i;}
 
     void draw();
-    void drawHelper(float x, float y, float r, int n);
+    void drawHelper(float x, float y, float r, int level);
 
     void setName(string n){name = n;}
     string getName(){return name;}

@@ -8,10 +8,10 @@ void ofApp::setup() {
     float length = 0.31 * ofGetHeight();
     animationTimer = 30;
 
-    Circle* newCircle = new Circle("circle", 0, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
-    Tree* newTree = new Tree("Tree", 0, ofGetWidth() / 2, ofGetHeight() - 20, length, 1.5 * PI, 10);
-    Triangle* newTriangle = new Triangle("Sierpinski Triangle", 0, (ofGetWidth() - (0.88 * ofGetHeight())) / 2, ofGetHeight() / 2 - 0.4 * (0.88 * ofGetHeight()), (0.88 * ofGetHeight()), 7);
-    Fern* newFern = new Fern("Bernsley Fern", 0, 0, 0, 10 * 1000);
+    Circle* newCircle = new Circle("circle", 3, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight());
+    Tree* newTree = new Tree("Tree", 10, ofGetWidth() / 2, ofGetHeight() - 20, length, 1.5 * PI);
+    Triangle* newTriangle = new Triangle("Sierpinski Triangle", 7, (ofGetWidth() - (0.88 * ofGetHeight())) / 2, ofGetHeight() / 2 - 0.4 * (0.88 * ofGetHeight()), (0.88 * ofGetHeight()));
+    Fern* newFern = new Fern("Bernsley Fern", 10 * 1000, 0, 0);
     SnowFlake* newFlake = new SnowFlake();
 
     polymorphic.push_back(newCircle);
@@ -26,9 +26,18 @@ void ofApp::setup() {
 void ofApp::update() {
     if (animation == true){
         if (animationUp == true){
-            if (polymorphic[index]->getLevel() > -3){
+            if (polymorphic[index]->getLevel() < 6){
                 if (animationTimer == 0){
-                    polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
+                    if (index != 3){
+                        if (polymorphic[index]->getLevel() < 6){ //added a limit to prevent crashing.
+                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
+                        }
+                    }
+                    else {
+                        if (polymorphic[index]->getLevel() > 1000){
+                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
+                        }
+                    }
                     animationTimer = 30;
                 }
             }
@@ -37,9 +46,18 @@ void ofApp::update() {
             }
         }
         else {
-            if (polymorphic[index]->getLevel() < 3){
+            if (polymorphic[index]->getLevel() > 0){
                 if (animationTimer == 0){
-                    polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
+                    if (index != 3) {
+                        if (polymorphic[index]->getLevel() > 0){ //added a limit to prevent crashing.
+                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
+                        }
+                    }
+                    else {
+                        if (polymorphic[index]->getLevel() > 1000){
+                            polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1000);
+                        }
+                    }
                     animationTimer = 30;
                 }
             }
@@ -89,22 +107,26 @@ void ofApp::keyPressed(int key) {
     else if (key == OF_KEY_ESC)
         ofSetFullscreen(false);
     else if (key == OF_KEY_RIGHT){
-        if (polymorphic[index]->getLevel() > -3){ //added a limit to prevent crashing. its going backwards on the snowflake
-            polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
+        if (index != 3){
+            if (polymorphic[index]->getLevel() < 6){ //added a limit to prevent crashing.
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
+            }
         }
-        if (index == 3){
-            if (polymorphic[index]->getLevel() > -9000){
-                polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 4000);
+        else {
+            if (polymorphic[index]->getLevel() < 9000){
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
             }
         }
     }
     else if (key == OF_KEY_LEFT){
-        if (polymorphic[index]->getLevel() < 3){ //added a limit to prevent crashing. its going backwards
-            polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
+        if (index != 3) {
+            if (polymorphic[index]->getLevel() > 0){ //added a limit to prevent crashing.
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
+            }
         }
-        if (index == 3){
-            if (polymorphic[index]->getLevel() <= 8000){
-                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 4000);
+        else {
+            if (polymorphic[index]->getLevel() > 1000){
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1000);
             }
         }
     }

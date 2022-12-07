@@ -9,12 +9,11 @@ class Triangle : public AbstractFractal {
     float x;
     float y;
     float size;
-    int n;
     int level;
     string name;
 
    public:
-    Triangle(string name, int level, float x, float y, float size, int n);
+    Triangle(string name, int level, float x, float y, float size);
     virtual ~Triangle(){}
     float getX(){return x;}
     void setX(float i){x = i;}
@@ -22,11 +21,9 @@ class Triangle : public AbstractFractal {
     void setY(float i){y = i;}
     float getSize(){return size;}
     void setSize(float i){size = i;}
-    int getN(){return n;}
-    void setN(int i){n = i;}
 
     void draw();
-    void drawHelper(float x, float y, float r, int n);
+    void drawHelper(float x, float y, float r, int level);
 
     void setName(string n){name = n;}
     string getName(){return name;}

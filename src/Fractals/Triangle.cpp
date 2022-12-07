@@ -1,21 +1,20 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle(string name, int level, float x, float y, float size, int n) : AbstractFractal(name, level) {
+Triangle::Triangle(string name, int level, float x, float y, float size) : AbstractFractal(name, level) {
     this->x = x;
     this->y = y;
     this->size = size;
-    this->n = n;
     this->name = name;
     this->level = level;
 }
 
 void Triangle::draw(){
     float size = 0.88 * ofGetHeight();
-    Triangle::drawHelper(x, y, size, n);
+    Triangle::drawHelper(x, y, size, level);
 }
 
-void Triangle::drawHelper(float x, float y, float size, int n){
-       if (n == level) {
+void Triangle::drawHelper(float x, float y, float size, int level){
+       if (0 == level) {
         return;
     }
 
@@ -29,6 +28,6 @@ void Triangle::drawHelper(float x, float y, float size, int n){
     ofDrawTriangle(a, b, c);
     ofSetColor(ofColor::white);
 
-    Triangle::drawHelper(x, y, size / 2, n - 1);
-    Triangle::drawHelper((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, n - 1);
+    Triangle::drawHelper(x, y, size / 2, level - 1);
+    Triangle::drawHelper((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, level - 1);
 }
