@@ -4,6 +4,9 @@
 
 #include "ofMain.h"
 #include "Circle.hpp"
+#include "tree.hpp"
+#include "Triangle.hpp"
+#include "Fern.hpp"
 #include "AbstractFractal.hpp"
 #include "Fractal.hpp"
 

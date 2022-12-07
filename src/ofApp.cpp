@@ -5,10 +5,17 @@
 void ofApp::setup() {
     ofSetEscapeQuitsApp(false);
     fullscreen = 0;
+    float length = 0.31 * ofGetHeight();
 
     Circle* newCircle = new Circle("circle", 0, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
+    Tree* newTree = new Tree("Tree", 0, ofGetWidth() / 2, ofGetHeight() - 20, length, 1.5 * PI, 10);
+    Triangle* newTriangle = new Triangle("Triangle", 0, (ofGetWidth() - (0.88 * ofGetHeight())) / 2, ofGetHeight() / 2 - 0.4 * (0.88 * ofGetHeight()), (0.88 * ofGetHeight()), 7);
+    Fern* newFern = new Fern("Fern", 0, 0, 0, 10 * 1000);
 
     polymorphic.push_back(newCircle);
+    polymorphic.push_back(newTree);
+    polymorphic.push_back(newTriangle);
+    polymorphic.push_back(newFern);
 
 }
 
@@ -23,16 +30,6 @@ void ofApp::draw() {
     ofNoFill();
     polymorphic[index]->draw();
     switch (mode) {
-    case '2': {
-        // Tree
-        float length = 0.31 * ofGetHeight();
-        drawMode2(ofGetWidth() / 2, ofGetHeight() - 20, 10, length, 1.5 * PI);
-    } break;
-    case '3': {
-        // Sierpinski Triangle
-        float size = 0.88 * ofGetHeight();
-        drawMode3((ofGetWidth() - size) / 2, ofGetHeight() / 2 - 0.4 * size, size, 7);
-    } break;
     case '4':
         // Barnsley Fern
         drawMode4(0, 0, 10 * 1000);
@@ -42,42 +39,6 @@ void ofApp::draw() {
         SnowFlake().draw( level );
         break;
     }
-}
-
-void ofApp::drawMode2(float x, float y, int n, float length, float rad) {
-    if (n == level) return;
-
-    float x2 = x + length * cos(rad);
-    float y2 = y + length * sin(rad);
-
-    ofDrawLine(x, y, x2, y2);
-
-    ofFill();
-    ofSetColor(ofColor::paleVioletRed); //color for the most beautiful tree y'all ever seen <3
-    ofDrawLine(x, y, x2, y2);
-    ofSetColor(ofColor::white);
-
-    drawMode2(x2, y2, n - 1, 0.7 * length, rad + 0.2 * PI);
-    drawMode2(x2, y2, n - 1, 0.7 * length, rad - 0.2 * PI);
-}
-
-void ofApp::drawMode3(float x, float y, float size, int n) {
-    if (n == level) {
-        return;
-    }
-
-    ofPoint a(x, y);
-    ofPoint b(x + size, y);
-    ofPoint c(x + size / 2, y + ((sqrt(3) * size) / 2));
-
-    ofDrawTriangle(a, b, c);
-
-    ofSetColor(ofColor::steelBlue); //color for triangle
-    ofDrawTriangle(a, b, c);
-    ofSetColor(ofColor::white);
-
-    drawMode3(x, y, size / 2, n - 1);
-    drawMode3((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, n - 1);
 }
 
 void ofApp::drawMode4(float x, float y, float n) {
@@ -108,8 +69,25 @@ void ofApp::drawMode4(float x, float y, float n) {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 
-    if (key >= '1' && key <= '5')
-        mode = key;
+    if (key >= '1' && key <= '5'){
+        switch(key){
+        case '1':
+            index = 0;
+            break;
+        case '2':
+            index = 1;
+            break;
+        case '3':
+            index = 2;
+            break;
+        case '4':
+            index = 3;
+            break;
+        case '5':
+            index = 4;
+            break;
+        }
+    }
     else if (key == OF_KEY_F11)
         ofSetFullscreen(fullscreen++ % 2 == 0);
     else if (key == OF_KEY_ESC)
@@ -118,10 +96,20 @@ void ofApp::keyPressed(int key) {
         if (polymorphic[index]->getLevel() > -3){ //added a limit to prevent crashing. its going backwards on the snowflake
             polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
         }
+        if (index == 3){
+            if (polymorphic[index]->getLevel() > -3000){
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
+            }
+        }
     }
     else if (key == OF_KEY_LEFT){
         if (polymorphic[index]->getLevel() < 3){ //added a limit to prevent crashing. its going backwards
             polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
+        }
+        if (index == 3){
+            if (polymorphic[index]->getLevel() < 3000){
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
+            }
         }
     }
 }
