@@ -6,6 +6,7 @@ void ofApp::setup() {
     ofSetEscapeQuitsApp(false);
     fullscreen = 0;
     float length = 0.31 * ofGetHeight();
+    animationTimer = 30;
 
     Circle* newCircle = new Circle("circle", 0, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight(), 3);
     Tree* newTree = new Tree("Tree", 0, ofGetWidth() / 2, ofGetHeight() - 20, length, 1.5 * PI, 10);
@@ -23,6 +24,31 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
+    if (animation == true){
+        if (animationUp == true){
+            if (polymorphic[index]->getLevel() > -3){
+                if (animationTimer == 0){
+                    polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
+                    animationTimer = 30;
+                }
+            }
+            else {
+                animationUp = false;
+            }
+        }
+        else {
+            if (polymorphic[index]->getLevel() < 3){
+                if (animationTimer == 0){
+                    polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
+                    animationTimer = 30;
+                }
+            }
+            else {
+                animationUp = true;
+            }
+        }
+        animationTimer--;
+    }
 }
 
 //--------------------------------------------------------------
@@ -33,6 +59,7 @@ void ofApp::draw() {
     polymorphic[index]->draw();
     ofSetColor(ofColor::white);
     ofDrawBitmapString(polymorphic[index]->getName(), 50, 50);
+    ofDrawBitmapString(polymorphic[index]->getLevel(), 50, 75);
 
 }
 //--------------------------------------------------------------
@@ -66,8 +93,8 @@ void ofApp::keyPressed(int key) {
             polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 1);
         }
         if (index == 3){
-            if (polymorphic[index]->getLevel() > -3000){
-                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
+            if (polymorphic[index]->getLevel() > -9000){
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() - 4000);
             }
         }
     }
@@ -76,9 +103,17 @@ void ofApp::keyPressed(int key) {
             polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1);
         }
         if (index == 3){
-            if (polymorphic[index]->getLevel() < 3000){
-                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 1000);
+            if (polymorphic[index]->getLevel() <= 8000){
+                polymorphic[index]->setLevel(polymorphic[index]->getLevel() + 4000);
             }
+        }
+    }
+    else if (key == ' '){
+        if (animation == true){
+            animation = false;
+        }
+        else {
+            animation = true;
         }
     }
 }

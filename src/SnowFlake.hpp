@@ -14,7 +14,7 @@ class SnowFlake : public AbstractFractal {
     glm::vec2 start;
     glm::vec2 end;
     string name = "Koch Snowflake";
-    int level = 0;
+    int level = 2;
 
   public:
     SnowFlake();

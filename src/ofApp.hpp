@@ -16,6 +16,9 @@ class ofApp : public ofBaseApp {
     unsigned int fullscreen;
     int level = 0; //levels go from -3 to 3.
     int index = 0;
+    bool animation = false;
+    bool animationUp = true;
+    int animationTimer;
 
     vector<Fractals *> polymorphic;
 
