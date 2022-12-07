@@ -31,10 +31,15 @@ void Triangle::drawHelper(float x, float y, float size, int level){
     break; case 3: ofSetColor(ofColor::royalBlue);
     break; case 4: ofSetColor(ofColor::steelBlue);
     break; case 5: ofSetColor(ofColor::dodgerBlue);
-    break; case 6: ofSetColor(ofColor::blueViolet);} //color for triangle
+    break; case 6: ofSetColor(ofColor::blueViolet);
+    break; case 7: ofSetColor(ofColor::blueSteel);
+    break; case 8: ofSetColor(ofColor::skyBlue);
+    break; case 9: ofSetColor(ofColor::royalBlue);
+    break; case 10: ofSetColor(ofColor::steelBlue);} //color for triangle //needs fixing
     ofDrawTriangle(a, b, c);
     ofSetColor(ofColor::white);
 
     Triangle::drawHelper(x, y, size / 2, level - 1);
     Triangle::drawHelper((a.x + b.x) / 2, (a.y + b.y) / 2, size / 2, level - 1);
+    Triangle::drawHelper((c.x + a.x) / 2, (c.y + a.y) / 2, size / 2, level - 1); //added the recursion to complete the sierpinski triangle
 }
