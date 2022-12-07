@@ -34,8 +34,7 @@ void Triangle::drawHelper(float x, float y, float size, int level){
     break; case 6: ofSetColor(ofColor::blueViolet);
     break; case 7: ofSetColor(ofColor::blueSteel);
     break; case 8: ofSetColor(ofColor::skyBlue);
-    break; case 9: ofSetColor(ofColor::royalBlue);
-    break; case 10: ofSetColor(ofColor::steelBlue);} //color for triangle //needs fixing
+    break; case 9: ofSetColor(ofColor::royalBlue);} //color for triangle //needs fixing
     ofDrawTriangle(a, b, c);
     ofSetColor(ofColor::white);
 

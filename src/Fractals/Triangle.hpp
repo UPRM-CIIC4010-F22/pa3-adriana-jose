@@ -10,7 +10,7 @@ class Triangle : public AbstractFractal {
     float y;
     float size;
     int level;
-    int limit = 10; //extended the limit to appreaciate the recursive sierpinski triangle
+    int limit = 9; //extended the limit to appreaciate the recursive sierpinski triangle
     string name;
 
    public:
