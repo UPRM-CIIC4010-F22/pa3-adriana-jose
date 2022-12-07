@@ -9,6 +9,7 @@ class Fern : public AbstractFractal {
     float x;
     float y;
     int level;
+    int colorLevel;
     int limit = 10 * 1000;
     string name;
 

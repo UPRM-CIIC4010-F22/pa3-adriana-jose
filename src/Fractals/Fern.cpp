@@ -9,6 +9,7 @@ Fern::Fern(string name, int level, float x, float y) : AbstractFractal(name, lev
 
 void Fern::draw(){
     Fern::drawHelper(x, y, level);
+    colorLevel = level / 1000;
 }
 
 void Fern::drawHelper(float x, float y, int level){
@@ -20,7 +21,18 @@ void Fern::drawHelper(float x, float y, int level){
     float py = ofMap(y, 0, 9.9983, ofGetHeight(), 0);
 
     ofFill();
-    ofSetColor(ofColor::lightYellow); //color for the leaf
+    switch(colorLevel){ //this sets the color per level.
+    case 0: ofSetColor(ofColor::red);
+    break; case 1: ofSetColor(ofColor::orangeRed);
+    break; case 2: ofSetColor(ofColor::orange);
+    break; case 3: ofSetColor(ofColor::yellow);
+    break; case 4: ofSetColor(ofColor::yellowGreen);
+    break; case 5: ofSetColor(ofColor::greenYellow);
+    break; case 6: ofSetColor(ofColor::lightGreen);
+    break; case 7: ofSetColor(ofColor::darkSeaGreen);
+    break; case 8: ofSetColor(ofColor::seaGreen);
+    break; case 9: ofSetColor(ofColor::forestGreen);
+    break; case 10: ofSetColor(ofColor::green);}
     ofDrawCircle(px, py, 0.6);
     ofSetColor(ofColor::white);
 

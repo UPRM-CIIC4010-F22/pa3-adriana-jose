@@ -24,7 +24,20 @@ void Tree::drawHelper(float x, float y, float length, float rad, int level){
     ofDrawLine(x, y, x2, y2);
 
     ofFill();
-    ofSetColor(ofColor::paleVioletRed); //color for the most beautiful tree y'all ever seen <3
+    switch(level){ //this sets the color per level.
+    case 0: ofSetColor(ofColor::darkBlue);
+    break; case 1: ofSetColor(ofColor::blue);
+    break; case 2: ofSetColor(ofColor::skyBlue);
+    break; case 3: ofSetColor(ofColor::darkGreen);
+    break; case 4: ofSetColor(ofColor::green);
+    break; case 5: ofSetColor(ofColor::lightGreen);
+    break; case 6: ofSetColor(ofColor::greenYellow);
+    break; case 7: ofSetColor(ofColor::yellowGreen);
+    break; case 8: ofSetColor(ofColor::yellow);
+    break; case 9: ofSetColor(ofColor::orange);
+    break; case 10: ofSetColor(ofColor::orangeRed);
+    break; case 11: ofSetColor(ofColor::red);
+    break; case 12: ofSetColor(ofColor::darkRed);}
     ofDrawLine(x, y, x2, y2);
     ofSetColor(ofColor::white);
 

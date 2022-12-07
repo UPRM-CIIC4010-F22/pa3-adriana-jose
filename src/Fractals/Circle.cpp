@@ -20,7 +20,14 @@ void Circle::drawHelper(float x, float y, float r, int level){
     ofDrawCircle(x, y, r);
 
     
-    ofSetColor(ofColor::seaGreen); //color for THAT figure
+    switch(level){ //this sets the color per level.
+    case 0: ofSetColor(ofColor::darkRed);
+    break; case 1: ofSetColor(ofColor::red);
+    break; case 2: ofSetColor(ofColor::indianRed);
+    break; case 3: ofSetColor(ofColor::orangeRed);
+    break; case 4: ofSetColor(ofColor::mediumVioletRed);
+    break; case 5: ofSetColor(ofColor::blue);
+    break; case 6: ofSetColor(ofColor::darkBlue);}
     ofDrawCircle(x, y, r);
     ofSetColor(ofColor::white);
 

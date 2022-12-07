@@ -24,7 +24,14 @@ void Triangle::drawHelper(float x, float y, float size, int level){
 
     ofDrawTriangle(a, b, c);
 
-    ofSetColor(ofColor::steelBlue); //color for triangle
+    switch(level){ //this sets the color per level.
+    case 0: ofSetColor(ofColor::lightBlue);
+    break; case 1: ofSetColor(ofColor::blueSteel);
+    break; case 2: ofSetColor(ofColor::skyBlue);
+    break; case 3: ofSetColor(ofColor::royalBlue);
+    break; case 4: ofSetColor(ofColor::steelBlue);
+    break; case 5: ofSetColor(ofColor::dodgerBlue);
+    break; case 6: ofSetColor(ofColor::blueViolet);} //color for triangle
     ofDrawTriangle(a, b, c);
     ofSetColor(ofColor::white);
 
