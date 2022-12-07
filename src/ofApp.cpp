@@ -30,6 +30,22 @@ void ofApp::draw() {
     ofNoFill();
     polymorphic[index]->draw();
     switch (mode) {
+    case '1': {
+        // Circle
+        float r = 0.31 * ofGetHeight();
+        angle += 0.01;
+        drawMode1(ofGetWidth() / 2, ofGetHeight() / 2, r, 3);
+    } break;
+    case '2': {
+        // Tree
+        float length = 0.31 * ofGetHeight();
+        drawMode2(ofGetWidth() / 2, ofGetHeight() - 20, 10, length, 1.5 * PI);
+    } break;
+    case '3': {
+        // Sierpinski Triangle
+        float size = 0.88 * ofGetHeight();
+        drawMode3((ofGetWidth() - size) / 2, ofGetHeight() / 2 - 0.4 * size, size, 7);
+    } break;
     case '4':
         // Barnsley Fern
         drawMode4(0, 0, 10 * 1000);
