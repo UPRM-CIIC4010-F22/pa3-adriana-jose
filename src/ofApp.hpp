@@ -10,6 +10,7 @@
 #include "AbstractFractal.hpp"
 #include "Fractal.hpp"
 #include "Light.hpp"
+#include "Sphere.hpp"
 
 class ofApp : public ofBaseApp {
   private:
@@ -46,4 +47,5 @@ class ofApp : public ofBaseApp {
     void drawMode3(float x, float y, float size, int n);
     void drawMode4(float x, float y, float n);
     void drawMode5(float x, float y, float r);
+    void drawMode6(float x, float y, float r);
 };
