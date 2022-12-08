@@ -14,7 +14,7 @@ void ofApp::setup() {
     Fern* newFern = new Fern("Bernsley Fern", 10 * 1000, 0, 0);
     SnowFlake* newFlake = new SnowFlake();
     Light* newLight = new Light("FlashLight", 3, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight());
-    Sphere* newSphere = new Sphere("The World", 3, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight());
+    Sphere* newSphere = new Sphere("Planets", 3, ofGetWidth() / 2, ofGetHeight() / 2, 0.31 * ofGetHeight());
 
     polymorphic.push_back(newCircle);
     polymorphic.push_back(newTree);

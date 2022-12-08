@@ -17,9 +17,7 @@ void Sphere::drawHelper(float x, float y, float r, int level){
     if (0 == level) return;
 
     int delta = r * 0.35;
-    ofDrawCircle(x, y, r);
 
-    ofFill();
     switch(level){ //this sets the color per level.
     case 0: ofSetColor(ofColor::yellow);
     break; case 1: ofSetColor(ofColor::darkRed);
@@ -28,7 +26,7 @@ void Sphere::drawHelper(float x, float y, float r, int level){
     break; case 4: ofSetColor(ofColor::mistyRose);
     break; case 5: ofSetColor(ofColor::ghostWhite);
     break; case 6: ofSetColor(ofColor::darkMagenta);}
-    ofDrawCircle(x, y, r);
+    ofDrawSphere(x, y, r);
     ofSetColor(ofColor::white);
 
     float angle1 = angle;
